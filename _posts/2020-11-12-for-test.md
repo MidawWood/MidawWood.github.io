@@ -1,6 +1,6 @@
 ---
 title: 利用GitHub+Jekyll+Markdown编辑器搭建可以在线更新的个人博客
-tags: github,gitbash,博客,小书匠
+#tags: 
 renderNumberedHeading: true
 grammar_cjkRuby: true
 ---
