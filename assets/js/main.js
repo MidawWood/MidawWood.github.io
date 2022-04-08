@@ -1,5 +1,5 @@
 /*
-	Photon by HTML5 UP
+	Striped by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
@@ -7,16 +7,16 @@
 (function($) {
 
 	var	$window = $(window),
-		$body = $('body');
+		$body = $('body'),
+		$document = $(document);
 
 	// Breakpoints.
 		breakpoints({
-			xlarge:   [ '1141px',  '1680px' ],
-			large:    [ '981px',   '1140px' ],
-			medium:   [ '737px',   '980px'  ],
-			small:    [ '481px',   '736px'  ],
-			xsmall:   [ '321px',   '480px'  ],
-			xxsmall:  [ null,      '320px'  ]
+			desktop:   [ '737px',   null     ],
+			wide:      [ '1201px',  null     ],
+			narrow:    [ '737px',   '1200px' ],
+			narrower:  [ '737px',   '1000px' ],
+			mobile:    [ null,      '736px'  ]
 		});
 
 	// Play initial animations on page load.
@@ -26,7 +26,45 @@
 			}, 100);
 		});
 
-	// Scrolly.
-		$('.scrolly').scrolly();
+	// Nav.
+
+		// Height hack.
+		/*
+			var $sc = $('#sidebar, #content'), tid;
+
+			$window
+				.on('resize', function() {
+					window.clearTimeout(tid);
+					tid = window.setTimeout(function() {
+						$sc.css('min-height', $document.height());
+					}, 100);
+				})
+				.on('load', function() {
+					$window.trigger('resize');
+				})
+				.trigger('resize');
+		*/
+
+		// Title Bar.
+			$(
+				'<div id="titleBar">' +
+					'<a href="#sidebar" class="toggle"></a>' +
+					'<span class="title">' + $('#logo').html() + '</span>' +
+				'</div>'
+			)
+				.appendTo($body);
+
+		// Sidebar
+			$('#sidebar')
+				.panel({
+					delay: 500,
+					hideOnClick: true,
+					hideOnSwipe: true,
+					resetScroll: true,
+					resetForms: true,
+					side: 'left',
+					target: $body,
+					visibleClass: 'sidebar-visible'
+				});
 
 })(jQuery);
